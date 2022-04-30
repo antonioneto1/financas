@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 2022_04_30_205322) do
     t.date "date"
     t.float "value"
     t.integer "spending_type"
+    t.boolean "recurring_expenses"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

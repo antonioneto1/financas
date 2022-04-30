@@ -9,7 +9,7 @@ class CreateUsers < ActiveRecord::Migration[6.1]
       t.string :age
       t.float :income
       t.string :token
-      t.integer :spendings_ids
+      t.integer :spending_ids
 
       t.timestamps
     end

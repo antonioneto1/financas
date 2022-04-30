@@ -7,6 +7,7 @@ class CreateSpendings < ActiveRecord::Migration[6.1]
       t.date :date
       t.float :value
       t.integer :spending_type
+      t.boolean :recurring_expenses
 
       t.timestamps
     end

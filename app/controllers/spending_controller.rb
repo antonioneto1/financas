@@ -62,6 +62,6 @@ class SpendingController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def spending_params
-      params.require(:spending).permit(:name, :user_id, :value, :description, :spending_type, :date)
+      params.require(:spending).permit(:name, :user_id, :value, :description, :spending_type, :date, :recurring_expenses)
     end
 end
