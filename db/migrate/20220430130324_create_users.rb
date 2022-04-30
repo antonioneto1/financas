@@ -7,8 +7,9 @@ class CreateUsers < ActiveRecord::Migration[6.1]
       t.string :phone
       t.string :document
       t.string :age
-      t.decimal :income
+      t.float :income
       t.string :token
+      t.integer :spendings_ids
 
       t.timestamps
     end

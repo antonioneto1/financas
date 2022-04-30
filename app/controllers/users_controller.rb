@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: %i[ show edit update destroy ]
+  before_action :set_user, only: %i[ show edit update destroy spending]
   skip_before_action :verify_authenticity_token
 
   # GET /users or /users.json
@@ -20,6 +20,15 @@ class UsersController < ApplicationController
   def edit
   end
 
+  def spending
+    if @user.spendings.any?
+      response = @user.spendings.order(date: :desc)
+      return render json: response, status: 200
+    else
+      return render json: [], status: 200
+    end
+  end
+
   # POST /users or /users.json
   def create
     @user = User.new(user_params)
@@ -28,7 +37,8 @@ class UsersController < ApplicationController
       if @user.save
         return render json: {message: "Usuario Cadastrado com sucesso"}, status: 200
       else
-        return render :json => {message: "Erro Ao tentar cadastrar"}, status: 400
+        erro = @user.errors.present? ? @user.errors.messages : "Erro Ao tentar cadastrar o usuario"
+        return render :json => {message: erro}, status: 400
       end
     end
   end
