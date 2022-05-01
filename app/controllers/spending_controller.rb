@@ -1,5 +1,5 @@
 class SpendingController < ApplicationController
-  before_action :set_spending, only: %i[ show edit update destroy ]
+  before_action :set_spending, only: %i[ show edit update destroy month_of_competence]
   skip_before_action :verify_authenticity_token
 
   # GET /spending or /spending.json
@@ -23,7 +23,7 @@ class SpendingController < ApplicationController
   # POST /spending or /spending.json
   def create
     spending = Spending.new(spending_params)
-
+    spending.month_of_competence
     respond_to do |format|
       if spending.save
         return render json: {message: "Gasto Cadastrado com sucesso"}, status: 200
@@ -62,6 +62,6 @@ class SpendingController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def spending_params
-      params.require(:spending).permit(:name, :user_id, :value, :description, :spending_type, :date, :recurring_expenses)
+      params.require(:spending).permit(:name, :user_id, :value, :description, :spending_type, :date, :recurring_expenses, :competence)
     end
 end

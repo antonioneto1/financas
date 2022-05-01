@@ -21,8 +21,17 @@ class UsersController < ApplicationController
   end
 
   def spending
+    if @user.spending_ids?
+      response = @user.spendings.spending_display.order(date: :desc)
+      return render json: response, status: 200
+    else
+      return render json: [], status: 200
+    end
+  end
+
+  def clear_spending
     if @user.spendings.any?
-      response = @user.spendings.order(date: :desc)
+      response = @user.spendings.destroy
       return render json: response, status: 200
     else
       return render json: [], status: 200

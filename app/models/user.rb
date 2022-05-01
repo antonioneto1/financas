@@ -7,4 +7,5 @@ class User < ApplicationRecord
   validates :pass, presence: {:message => "A senha é obrigatório"}
 
   has_many :spendings
+  
 end

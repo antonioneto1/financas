@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_30_205322) do
+ActiveRecord::Schema.define(version: 2022_05_01_112625) do
 
   create_table "spendings", force: :cascade do |t|
     t.integer "user_id"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 2022_04_30_205322) do
     t.boolean "recurring_expenses"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "competence"
   end
 
   create_table "users", force: :cascade do |t|
@@ -31,9 +32,9 @@ ActiveRecord::Schema.define(version: 2022_04_30_205322) do
     t.string "phone"
     t.string "document"
     t.string "age"
-    t.decimal "income"
+    t.float "income"
     t.string "token"
-    t.integer "spendings_ids"
+    t.integer "spending_ids"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
